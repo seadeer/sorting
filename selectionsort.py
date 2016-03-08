@@ -1,4 +1,6 @@
+import datetime, random, math
 def selectionSort(arr):
+    t1 = datetime.datetime.now()
     start = 0
     temp = 0
     while start < len(arr)-1:
@@ -15,18 +17,18 @@ def selectionSort(arr):
         temp = currentMin
         arr[currentMinPos] = arr[start]
         arr[start] = temp
-        print arr
         start += 1
+    t2 = datetime.datetime.now()
+    runtime = t2 - t1
+    return (arr, runtime)
 
-
-
-
-
-
-
-
-
+def makeRandomArr():
+    arr = []
+    for i in range(1, 101):
+        arr.append(int(math.floor(random.random()*10000)))
+    print "Original array: %s" % arr
+    return arr
 
 
 if __name__ == '__main__':
-    selectionSort([2, 7, 9, 10, 2, 3, 7, 1])
+    print selectionSort(makeRandomArr())
