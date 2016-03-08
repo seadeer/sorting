@@ -7,16 +7,24 @@ def selectionSort(arr):
         #pick the minimum
         currentMin = arr[start]
         currentMinPos = start
+        currentMax = arr[start]
+        currentMaxPos = arr[start]
         for i in range(start,len(arr)):
             if arr[i] < currentMin:
                 currentMin = arr[i]
-                currentMinPos = i
+                currentMinPos = i 
+            if arr[i] > currentMax:
+                currentMax = arr[i]
+                currentMaxPos = i
 
         '''after running through the entire array,
         swap the minimum with the first element'''
         temp = currentMin
+        temp2 = currentMax
         arr[currentMinPos] = arr[start]
         arr[start] = temp
+        arr[currentMaxPos] = arr[len(arr)-1]
+        arr[len(arr)-1] = temp2
         start += 1
     t2 = datetime.datetime.now()
     runtime = t2 - t1
